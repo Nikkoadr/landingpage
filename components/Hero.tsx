@@ -1,9 +1,25 @@
 "use client";
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Award, Users, BookOpen } from "lucide-react";
 
 const Hero = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const images = [
+    { src: "/hero1.webp", alt: "SMK Muhammadiyah Kandanghaur 1" },
+    { src: "/hero2.webp", alt: "SMK Muhammadiyah Kandanghaur 2" },
+    { src: "/hero3.webp", alt: "SMK Muhammadiyah Kandanghaur 3" },
+  ];
+
+  // Auto slide tiap 5 detik
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [images.length]);
+
   const scrollToAbout = () => {
     document.querySelector("#about")?.scrollIntoView({ behavior: "smooth" });
   };
@@ -11,7 +27,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center bg-gradient-to-br from-blue-50 via-white to-blue-100"
+      className="relative min-h-screen flex items-center bg-gradient-to-br from-blue-50 via-white to-blue-100 pt-20"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -116,22 +132,42 @@ const Hero = () => {
             </motion.div>
           </motion.div>
 
-          {/* Image */}
+          {/* Image Slider + Background */}
           <motion.div
             className="relative"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <div className="relative z-10">
-              <motion.img
-                src="/hero.webp"
-                alt="SMK Muhammadiyah Kandanghaur"
-                className="w-full h-96 object-cover rounded-2xl shadow-2xl"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
-              />
+            <div className="relative z-10 overflow-hidden rounded-2xl shadow-2xl h-96">
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={images[currentIndex].src}
+                  src={images[currentIndex].src}
+                  alt={images[currentIndex].alt}
+                  className="w-full h-96 object-cover rounded-2xl"
+                  initial={{ opacity: 0, scale: 1.05 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.8 }}
+                />
+              </AnimatePresence>
+
+              {/* Indicator */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                {images.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setCurrentIndex(i)}
+                    className={`w-3 h-3 rounded-full ${
+                      i === currentIndex ? "bg-blue-600" : "bg-white/60"
+                    }`}
+                  />
+                ))}
+              </div>
             </div>
+
+            {/* Background kotak biru tetap ada */}
             <div className="absolute -top-4 -left-4 w-full h-full bg-gradient-to-br from-blue-200 to-blue-300 rounded-2xl"></div>
           </motion.div>
         </div>

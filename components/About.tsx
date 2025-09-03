@@ -134,7 +134,7 @@ const About = () => {
               viewport={{ once: true }}
             >
               <img
-                src="https://images.pexels.com/photos/5212703/pexels-photo-5212703.jpeg?auto=compress&cs=tinysrgb&w=600"
+                src="/kenapa.webp"
                 alt="Suasana belajar"
                 className="w-full h-64 object-cover rounded-xl shadow-lg"
               />
