@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import { Menu, X } from "lucide-react";
 
 const Header = () => {
@@ -21,6 +22,7 @@ const Header = () => {
     { name: "Fasilitas", href: "#facilities" },
     { name: "Berita", href: "#news" },
     { name: "Kontak", href: "#contact" },
+    { name: "Login", href: "/auth/login", isPage: true }, // Tandai ini sebagai halaman
   ];
 
   const scrollToSection = (href: string) => {
@@ -44,7 +46,6 @@ const Header = () => {
               alt="Logo SMK"
               className="h-10 w-10 object-contain"
             />
-            {/* Nama sekolah hanya muncul di md+ */}
             <div className="hidden md:block ml-2">
               <h1 className="text-lg font-bold text-gray-900">
                 SMK Muhammadiyah Kandanghaur
@@ -55,15 +56,25 @@ const Header = () => {
 
           {/* Menu Desktop */}
           <nav className="hidden md:flex space-x-8">
-            {menuItems.map((item) => (
-              <button
-                key={item.name}
-                onClick={() => scrollToSection(item.href)}
-                className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200"
-              >
-                {item.name}
-              </button>
-            ))}
+            {menuItems.map((item) =>
+              item.isPage ? (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200"
+                >
+                  {item.name}
+                </Link>
+              ) : (
+                <button
+                  key={item.name}
+                  onClick={() => scrollToSection(item.href)}
+                  className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200"
+                >
+                  {item.name}
+                </button>
+              )
+            )}
           </nav>
 
           {/* Tombol Menu Mobile */}
@@ -83,15 +94,26 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden absolute top-16 left-0 right-0 bg-white shadow-lg border-t">
             <nav className="py-4">
-              {menuItems.map((item) => (
-                <button
-                  key={item.name}
-                  onClick={() => scrollToSection(item.href)}
-                  className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
-                >
-                  {item.name}
-                </button>
-              ))}
+              {menuItems.map((item) =>
+                item.isPage ? (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                  >
+                    {item.name}
+                  </Link>
+                ) : (
+                  <button
+                    key={item.name}
+                    onClick={() => scrollToSection(item.href)}
+                    className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                  >
+                    {item.name}
+                  </button>
+                )
+              )}
             </nav>
           </div>
         )}
