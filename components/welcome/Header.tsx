@@ -22,7 +22,7 @@ const Header = () => {
     { name: "Fasilitas", href: "#facilities" },
     { name: "Berita", href: "#news" },
     { name: "Kontak", href: "#contact" },
-    { name: "Login", href: "/auth/login", isPage: true }, // Tandai ini sebagai halaman
+    { name: "Login", href: "/auth/login", isPage: true },
   ];
 
   const scrollToSection = (href: string) => {
