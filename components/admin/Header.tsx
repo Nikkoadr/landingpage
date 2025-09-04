@@ -43,7 +43,9 @@ const Header: React.FC<HeaderProps> = ({ setSidebarOpen }) => {
               <User className="w-5 h-5 text-white" />
             </div>
             <div className="hidden sm:block">
-              <p className="text-sm font-semibold text-slate-800">John Doe</p>
+              <p className="text-sm font-semibold text-slate-800">
+                Nikko Adrian
+              </p>
               <p className="text-xs text-slate-500">Administrator</p>
             </div>
             <ChevronDown className="w-4 h-4 text-slate-400" />

@@ -50,11 +50,13 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
           {/* Logo */}
           <div className="flex items-center justify-between px-6 py-4 border-b border-blue-100">
             <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
-                <Home className="w-5 h-5 text-white" />
-              </div>
+              <img
+                src="/logo.png"
+                alt="Logo SMK"
+                className="h-10 w-10 object-contain"
+              />
               <h1 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
-                AdminPro
+                SMK MUH KDH
               </h1>
             </div>
             <button
@@ -100,10 +102,10 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-semibold text-slate-800 truncate">
-                  Admin User
+                  Nikko Adrian
                 </p>
                 <p className="text-xs text-slate-500 truncate">
-                  admin@company.com
+                  nikkoadrian02@gmail.com
                 </p>
               </div>
             </div>
