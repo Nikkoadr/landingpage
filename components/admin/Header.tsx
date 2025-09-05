@@ -1,12 +1,52 @@
 "use client";
-import React from "react";
-import { Menu, Bell, Search, User, ChevronDown } from "lucide-react";
+import React, { useState, useRef, useEffect } from "react";
+import {
+  Menu,
+  Bell,
+  Search,
+  User,
+  ChevronDown,
+  LogOut,
+  Settings,
+  UserCircle,
+} from "lucide-react";
+import { useRouter } from "next/navigation";
 
 interface HeaderProps {
   setSidebarOpen: (open: boolean) => void;
 }
 
 const Header: React.FC<HeaderProps> = ({ setSidebarOpen }) => {
+  const router = useRouter();
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // tutup dropdown saat klik di luar
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setDropdownOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const handleLogout = async () => {
+    try {
+      await fetch("/api/logout", {
+        method: "POST",
+        credentials: "include",
+      });
+      router.push("/auth/login");
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
+  };
+
   return (
     <header className="bg-white border-b border-blue-100 shadow-sm">
       <div className="flex items-center justify-between px-6 py-4">
@@ -38,17 +78,54 @@ const Header: React.FC<HeaderProps> = ({ setSidebarOpen }) => {
           </button>
 
           {/* User menu */}
-          <div className="flex items-center space-x-3 p-2 hover:bg-blue-50 rounded-xl cursor-pointer transition-all duration-200">
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center">
-              <User className="w-5 h-5 text-white" />
-            </div>
-            <div className="hidden sm:block">
-              <p className="text-sm font-semibold text-slate-800">
-                Nikko Adrian
-              </p>
-              <p className="text-xs text-slate-500">Administrator</p>
-            </div>
-            <ChevronDown className="w-4 h-4 text-slate-400" />
+          <div className="relative" ref={dropdownRef}>
+            <button
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+              className="flex items-center space-x-3 p-2 hover:bg-blue-50 rounded-xl cursor-pointer transition-all duration-200"
+            >
+              <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center">
+                <User className="w-5 h-5 text-white" />
+              </div>
+              <div className="hidden sm:block text-left">
+                <p className="text-sm font-semibold text-slate-800">
+                  Nikko Adrian
+                </p>
+                <p className="text-xs text-slate-500">Administrator</p>
+              </div>
+              <ChevronDown className="w-4 h-4 text-slate-400" />
+            </button>
+
+            {/* Dropdown */}
+            {dropdownOpen && (
+              <div className="absolute right-0 mt-2 w-48 bg-white border border-blue-100 shadow-lg rounded-xl z-50">
+                {/* Profile */}
+                <button
+                  onClick={() => router.push("/admin/profile")}
+                  className="w-full flex items-center px-4 py-2 text-sm text-slate-700 hover:bg-blue-50 transition-colors rounded-t-xl"
+                >
+                  <UserCircle className="w-4 h-4 mr-2" />
+                  Profile
+                </button>
+
+                {/* Settings */}
+                <button
+                  onClick={() => router.push("/admin/settings")}
+                  className="w-full flex items-center px-4 py-2 text-sm text-slate-700 hover:bg-blue-50 transition-colors"
+                >
+                  <Settings className="w-4 h-4 mr-2" />
+                  Settings
+                </button>
+
+                {/* Logout */}
+                <button
+                  onClick={handleLogout}
+                  className="w-full flex items-center px-4 py-2 text-sm text-red-500 hover:bg-red-50 transition-colors rounded-b-xl"
+                >
+                  <LogOut className="w-4 h-4 mr-2" />
+                  Logout
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
