@@ -18,7 +18,7 @@ export default function LoginPage() {
       const res = await fetch("http://localhost:8081/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        credentials: "include",
+        credentials: "include", 
         body: JSON.stringify({ email, password }),
       });
 
@@ -81,6 +81,14 @@ export default function LoginPage() {
               Daftar di sini
             </Link>
           </p>
+          <div className="mt-4 text-center">
+            <button
+              onClick={() => router.push("/")}
+              className="text-gray-600 hover:underline text-sm"
+            >
+              ← Kembali ke Home
+            </button>
+          </div>
         </div>
       </div>
     </div>
