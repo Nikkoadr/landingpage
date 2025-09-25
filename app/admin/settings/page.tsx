@@ -1,13 +1,26 @@
 "use client";
 import React, { useState } from "react";
-import { Save, Bell, Shield, Palette, Globe, Database } from "lucide-react";
+import { Save, Bell, Shield, Globe, Database } from "lucide-react";
+
+interface SettingItem {
+  label: string;
+  type: "text" | "email" | "number" | "toggle";
+  value: string | boolean;
+}
+
+interface SettingSection {
+  title: string;
+  icon: React.ElementType;
+  color: string;
+  settings: SettingItem[];
+}
 
 const Settings: React.FC = () => {
   const [notifications, setNotifications] = useState(true);
   const [emailAlerts, setEmailAlerts] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
 
-  const settingSections = [
+  const [settingSections, setSettingSections] = useState<SettingSection[]>([
     {
       title: "General Settings",
       icon: Globe,
@@ -42,7 +55,18 @@ const Settings: React.FC = () => {
         { label: "Data Retention (days)", type: "number", value: "90" },
       ],
     },
-  ];
+  ]);
+
+  // Handle perubahan setting
+  const handleChange = (
+    sectionIndex: number,
+    settingIndex: number,
+    newValue: string | boolean
+  ) => {
+    const updated = [...settingSections];
+    updated[sectionIndex].settings[settingIndex].value = newValue;
+    setSettingSections(updated);
+  };
 
   return (
     <div className="space-y-8">
@@ -64,6 +88,7 @@ const Settings: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Push Notifications */}
           <div className="flex items-center justify-between p-4 bg-blue-50 rounded-xl border border-blue-200">
             <span className="font-medium text-slate-700">
               Push Notifications
@@ -75,10 +100,16 @@ const Settings: React.FC = () => {
                 onChange={(e) => setNotifications(e.target.checked)}
                 className="sr-only peer"
               />
-              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+              <div
+                className="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:bg-blue-600
+                after:content-[''] after:absolute after:top-[2px] after:left-[2px]
+                after:bg-white after:border-gray-300 after:border after:rounded-full
+                after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"
+              ></div>
             </label>
           </div>
 
+          {/* Email Alerts */}
           <div className="flex items-center justify-between p-4 bg-cyan-50 rounded-xl border border-cyan-200">
             <span className="font-medium text-slate-700">Email Alerts</span>
             <label className="relative inline-flex items-center cursor-pointer">
@@ -88,10 +119,16 @@ const Settings: React.FC = () => {
                 onChange={(e) => setEmailAlerts(e.target.checked)}
                 className="sr-only peer"
               />
-              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+              <div
+                className="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:bg-blue-600
+                after:content-[''] after:absolute after:top-[2px] after:left-[2px]
+                after:bg-white after:border-gray-300 after:border after:rounded-full
+                after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"
+              ></div>
             </label>
           </div>
 
+          {/* Dark Mode */}
           <div className="flex items-center justify-between p-4 bg-purple-50 rounded-xl border border-purple-200">
             <span className="font-medium text-slate-700">Dark Mode</span>
             <label className="relative inline-flex items-center cursor-pointer">
@@ -101,7 +138,12 @@ const Settings: React.FC = () => {
                 onChange={(e) => setDarkMode(e.target.checked)}
                 className="sr-only peer"
               />
-              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+              <div
+                className="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:bg-blue-600
+                after:content-[''] after:absolute after:top-[2px] after:left-[2px]
+                after:bg-white after:border-gray-300 after:border after:rounded-full
+                after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"
+              ></div>
             </label>
           </div>
         </div>
@@ -109,12 +151,11 @@ const Settings: React.FC = () => {
 
       {/* Detailed Settings */}
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
-        {settingSections.map((section, index) => {
+        {settingSections.map((section, sectionIndex) => {
           const Icon = section.icon;
-
           return (
             <div
-              key={index}
+              key={sectionIndex}
               className="bg-white rounded-2xl p-6 shadow-sm border border-blue-100"
             >
               <div className="flex items-center space-x-3 mb-6">
@@ -139,15 +180,36 @@ const Settings: React.FC = () => {
                         <input
                           type="checkbox"
                           checked={setting.value as boolean}
+                          onChange={(e) =>
+                            handleChange(
+                              sectionIndex,
+                              settingIndex,
+                              e.target.checked
+                            )
+                          }
                           className="sr-only peer"
                         />
-                        <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                        <div
+                          className="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:bg-blue-600
+                          after:content-[''] after:absolute after:top-[2px] after:left-[2px]
+                          after:bg-white after:border-gray-300 after:border after:rounded-full
+                          after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"
+                        ></div>
                       </label>
                     ) : (
                       <input
                         type={setting.type}
-                        defaultValue={setting.value as string}
-                        className="w-full px-4 py-2 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                        value={setting.value as string}
+                        onChange={(e) =>
+                          handleChange(
+                            sectionIndex,
+                            settingIndex,
+                            e.target.value
+                          )
+                        }
+                        className="w-full px-4 py-2 border border-blue-200 rounded-lg 
+                          focus:outline-none focus:ring-2 focus:ring-blue-500 
+                          focus:border-transparent transition-all duration-200"
                       />
                     )}
                   </div>
@@ -156,12 +218,13 @@ const Settings: React.FC = () => {
 
               <button
                 className={`
-                w-full mt-6 flex items-center justify-center space-x-2 
-                bg-gradient-to-r ${section.color} hover:opacity-90
-                text-white px-4 py-3 rounded-xl font-medium 
-                shadow-lg hover:shadow-xl transform hover:scale-105 
-                transition-all duration-200
-              `}
+                  w-full mt-6 flex items-center justify-center space-x-2 
+                  bg-gradient-to-r ${section.color} hover:opacity-90
+                  text-white px-4 py-3 rounded-xl font-medium 
+                  shadow-lg hover:shadow-xl transform hover:scale-105 
+                  transition-all duration-200
+                `}
+                onClick={() => console.log("Saved:", section)}
               >
                 <Save className="w-5 h-5" />
                 <span>Save Changes</span>

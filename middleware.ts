@@ -2,16 +2,22 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export function middleware(req: NextRequest) {
+  const token = req.cookies.get("access_token")?.value;
   const { pathname } = req.nextUrl;
 
-  // proteksi semua route /admin/*
-  if (pathname.startsWith("/admin")) {
-    const token = req.cookies.get("jwt")?.value; // ambil token HttpOnly
+  // 🔹 Jika user sudah login, cegah akses login/register
+  if (
+    token &&
+    (pathname.startsWith("/auth/login") ||
+      pathname.startsWith("/auth/register"))
+  ) {
+    return NextResponse.redirect(new URL("/admin/dashboard", req.url));
+  }
 
+  // 🔹 Proteksi semua route /admin/*
+  if (pathname.startsWith("/admin")) {
     if (!token) {
-      // redirect ke login jika token tidak ada
-      const loginUrl = new URL("/auth/login", req.url);
-      return NextResponse.redirect(loginUrl);
+      return NextResponse.redirect(new URL("/auth/login", req.url));
     }
   }
 
@@ -19,5 +25,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/admin/:path*"], // semua route /admin/*
+  matcher: ["/admin/:path*", "/auth/login", "/auth/register"],
 };

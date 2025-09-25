@@ -3,18 +3,18 @@ import type { NextRequest } from "next/server";
 
 export async function POST(req: NextRequest) {
   // panggil backend Go logout (optional)
-  const cookie = req.cookies.get("jwt")?.value;
+  const cookie = req.cookies.get("access_token")?.value;
   if (cookie) {
-    await fetch("http://localhost:8081/api/logout", {
+    await fetch("http://localhost:8000/api/v1/auth/logout", {
       method: "POST",
-      headers: { Cookie: `jwt=${cookie}` },
+      headers: { Cookie: `access_token=${cookie}` },
     });
   }
 
   // Hapus cookie di domain FE agar middleware Next.js mendeteksi
   const res = NextResponse.redirect(new URL("/auth/login", req.url));
   res.cookies.set({
-    name: "jwt",
+    name: "access_token",
     value: "",
     path: "/",
     maxAge: 0,
