@@ -1,4 +1,5 @@
 import "./globals.css";
+import { Toaster } from "react-hot-toast";
 
 export const metadata = {
   title: "SMK Muhammadiyah Kandanghaur",
@@ -15,7 +16,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id">
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        {children}
+        {/* 🔔 Global toaster biar bisa dipanggil dari mana saja */}
+        <Toaster position="top-right" toastOptions={{ duration: 3000 }} />
+      </body>
     </html>
   );
 }
