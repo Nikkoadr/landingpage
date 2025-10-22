@@ -80,7 +80,7 @@ const Settings: React.FC = () => {
   };
 
   const handleSave = async (section: SettingSection) => {
-    const payload: Record<string, any> = {};
+    const payload: Record<string, unknown> = {};
     section.settings.forEach((s) => {
       payload[s.key] = s.value;
     });
