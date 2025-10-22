@@ -35,7 +35,7 @@ const Footer = () => {
     {
       icon: <Facebook className="h-5 w-5" />,
       color: "hover:text-blue-600",
-      link: "https://facebook.com/",
+      link: "https://facebook.com/smkmuhkandanghaur",
     },
     {
       icon: <Instagram className="h-5 w-5" />,
@@ -45,12 +45,12 @@ const Footer = () => {
     {
       icon: <Youtube className="h-5 w-5" />,
       color: "hover:text-red-600",
-      link: "https://youtube.com/",
+      link: "https://youtube.com/smkmuhkandanghaur",
     },
     {
       icon: <Twitter className="h-5 w-5" />,
       color: "hover:text-blue-400",
-      link: "https://twitter.com/",
+      link: "https://x.com/smkmuhkdh",
     },
   ];
 
@@ -158,10 +158,6 @@ const Footer = () => {
                   <br />
                   Jawa Barat 45254
                 </div>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Phone className="h-5 w-5 text-blue-400" />
-                <span className="text-gray-400 text-sm">(0234) 123456</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-blue-400" />
