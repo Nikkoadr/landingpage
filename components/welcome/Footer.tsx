@@ -40,12 +40,12 @@ const Footer = () => {
     {
       icon: <Instagram className="h-5 w-5" />,
       color: "hover:text-pink-600",
-      link: "https://instagram.com/",
+      link: "https://instagram.com/smkmuhkandanghaur",
     },
     {
       icon: <Youtube className="h-5 w-5" />,
       color: "hover:text-red-600",
-      link: "https://youtube.com/smkmuhkandanghaur",
+      link: "https://youtube.com/@smkmuhkandanghaur",
     },
     {
       icon: <Twitter className="h-5 w-5" />,
