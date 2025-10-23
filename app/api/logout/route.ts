@@ -7,14 +7,14 @@ export async function POST(req: NextRequest) {
   if (cookie) {
     await fetch("http://localhost:8000/api/v1/auth/logout", {
       method: "POST",
-      headers: { Cookie: `access_token=${cookie}` },
+      headers: { Cookie: `token=${cookie}` },
     });
   }
 
   // Hapus cookie di domain FE agar middleware Next.js mendeteksi
   const res = NextResponse.redirect(new URL("/auth/login", req.url));
   res.cookies.set({
-    name: "access_token",
+    name: "token",
     value: "",
     path: "/",
     maxAge: 0,
