@@ -1,64 +1,51 @@
 "use client";
 import React from "react";
-import {
-  Wifi,
-  Car,
-  FlaskConical,
-  Monitor,
-  Wrench,
-  Palette,
-} from "lucide-react";
+import { Monitor, Hammer, Car, Cpu, FlaskConical, Wrench } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Facilities = () => {
   const facilities = [
     {
-      icon: <Monitor className="h-8 w-8" />,
+      icon: <Monitor className="h-8 w-8 text-green-600" />,
       title: "Lab Komputer",
       description:
-        "Laboratorium komputer dengan 40 unit PC modern dan akses internet high-speed",
-      image:
-        "https://images.pexels.com/photos/3184460/pexels-photo-3184460.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "Laboratorium komputer dengan 40 unit PC modern dan akses internet high-speed.",
+      image: "/kk/tkj.jpg",
     },
     {
-      icon: <Wrench className="h-8 w-8" />,
-      title: "Workshop Teknik",
+      icon: <Hammer className="h-8 w-8 text-red-600" />,
+      title: "Bengkel LAS",
       description:
-        "Bengkel lengkap dengan peralatan modern untuk praktik teknik pemesinan",
-      image:
-        "https://images.pexels.com/photos/3862132/pexels-photo-3862132.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "Bengkel lengkap dengan peralatan modern untuk praktik teknik pengelasan.",
+      image: "/kk/tpl.jpg",
     },
     {
-      icon: <Car className="h-8 w-8" />,
-      title: "Bengkel Otomotif",
+      icon: <Wrench className="h-8 w-8 text-blue-600" />,
+      title: "Bengkel TEFA TKR",
       description:
-        "Fasilitas lengkap untuk praktik perbaikan dan maintenance kendaraan",
-      image:
-        "https://images.pexels.com/photos/3807277/pexels-photo-3807277.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "Fasilitas lengkap untuk praktik perbaikan dan maintenance kendaraan roda empat.",
+      image: "/kk/tkr.jpg",
     },
     {
-      icon: <Palette className="h-8 w-8" />,
-      title: "Studio Multimedia",
+      icon: <Cpu className="h-8 w-8 text-orange-600" />,
+      title: "Bengkel Elektronika",
       description:
-        "Studio kreatif dengan software desain terkini dan peralatan produksi video",
-      image:
-        "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "Bengkel lengkap dengan peralatan modern untuk praktik teknik elektronika dan kontrol.",
+      image: "/kk/tei.jpg",
     },
     {
-      icon: <FlaskConical className="h-8 w-8" />,
-      title: "Laboratorium IPA",
+      icon: <FlaskConical className="h-8 w-8 text-cyan-600" />,
+      title: "Laboratorium Farmasi",
       description:
-        "Lab sains modern untuk mendukung pembelajaran mata pelajaran umum",
-      image:
-        "https://images.pexels.com/photos/2280571/pexels-photo-2280571.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "Lab Farmasi modern untuk mendukung pembelajaran mata pelajaran farmasi dan kimia terapan.",
+      image: "/kk/far.jpg",
     },
     {
-      icon: <Wifi className="h-8 w-8" />,
-      title: "Perpustakaan Digital",
+      icon: <Car className="h-8 w-8 text-gray-600" />,
+      title: "Bengkel Motor",
       description:
-        "Koleksi buku digital dan fisik dengan sistem katalog online",
-      image:
-        "https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "Fasilitas lengkap untuk praktik perbaikan dan maintenance kendaraan roda dua (TSM).",
+      image: "/kk/tsm.jpg",
     },
   ];
 
@@ -130,10 +117,10 @@ const Facilities = () => {
             </h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
-                { count: "25", label: "Ruang Kelas" },
+                { count: "1", label: "Perpustakaan" },
                 { count: "3", label: "Lapangan Olahraga" },
                 { count: "1", label: "Masjid" },
-                { count: "2", label: "Kantin" },
+                { count: "7", label: "Kantin" },
               ].map((item, idx) => (
                 <motion.div
                   key={idx}

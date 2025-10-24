@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { Target, Eye } from "lucide-react";
+import { Target, Eye, Star } from "lucide-react";
 
 const About = () => {
   const values = [
@@ -14,20 +14,54 @@ const About = () => {
       icon: <Eye className="h-8 w-8 text-green-600" />,
       title: "Misi",
       description: `
-  1. Mengembangkan ilmu pengetahuan dan penguasaan teknologi berdasarkan minat, bakat, serta potensi peserta didik di lingkungan sekolah dan masyarakat.  
+1. Mengembangkan ilmu pengetahuan dan penguasaan teknologi berdasarkan minat, bakat, serta potensi peserta didik di lingkungan sekolah dan masyarakat.  
 
-  2. Meningkatkan mutu lulusan untuk bekerja, berwirausaha, dan melanjutkan pendidikan yang lebih tinggi.  
+2. Meningkatkan mutu lulusan untuk bekerja, berwirausaha, dan melanjutkan pendidikan yang lebih tinggi.  
 
-  3. Mengamalkan nilai-nilai keagamaan dalam kehidupan sehari-hari di sekolah, keluarga, dan masyarakat.  
+3. Mengamalkan nilai-nilai keagamaan dalam kehidupan sehari-hari di sekolah, keluarga, dan masyarakat.  
 
-  4. Meningkatkan kesadaran warga sekolah dalam upaya melestarikan lingkungan hidup.  
+4. Meningkatkan kesadaran warga sekolah dalam upaya melestarikan lingkungan hidup.  
 
-  5. Meningkatkan kompetensi peserta didik dalam penguasaan ilmu pengetahuan serta teknologi yang berwawasan regional, nasional, dan global serta peduli dan berbudaya lingkungan.  
+5. Meningkatkan kompetensi peserta didik dalam penguasaan ilmu pengetahuan serta teknologi yang berwawasan regional, nasional, dan global serta peduli dan berbudaya lingkungan.  
 
-  6. Menjalankan pelayanan terbaik.  
+6. Menjalankan pelayanan terbaik.  
 
-  7. Menumbuhkan serta mewujudkan jiwa patriotis dan nasionalis.
-      `,
+7. Menumbuhkan serta mewujudkan jiwa patriotis dan nasionalis.
+    `,
+    },
+    {
+      icon: <Star className="h-8 w-8 text-yellow-600" />,
+      title: "8 Core Value",
+      description: `
+**Taqwa** — Mengutamakan nilai-nilai ketaatan kepada Allah SWT, kejujuran, persatuan, kekeluargaan, dan keterbukaan.  
+
+**Efisien** — Bekerja secara produktif dan cekatan untuk mencapai hasil yang terukur secara konsisten.  
+
+**Responsibel** — Melaksanakan tugas dan kewajiban dengan baik serta mengambil keputusan sesuai kewenangan yang diberikan.  
+
+**Dedikasi** — Berpegang teguh pada nilai-nilai kemuhammadiyahan dalam pengabdian di lingkungan sekolah.  
+
+**Excellent** — Senantiasa mengejar dan menggapai keunggulan dalam setiap perkembangan ilmu pengetahuan dan teknologi.  
+
+**Proaktif** — Menyelaraskan kurikulum dengan industri melalui pendekatan strategis untuk meningkatkan mutu pembelajaran dan lulusan.  
+
+**Akuntabel** — Bertanggung jawab kepada seluruh pemangku kepentingan atas keputusan dan tindakan yang diambil.  
+
+**Nyaman** — Mewujudkan lingkungan sekolah yang nyaman dan kondusif bagi pendidik, peserta didik, dan seluruh stakeholder.
+    `,
+    },
+    {
+      icon: <Target className="h-8 w-8 text-indigo-600" />,
+      title: "Tujuan Lembaga",
+      description: `
+1. Mewujudkan proses pendidikan yang berkualitas dan bermutu.  
+
+2. Memfasilitasi serta memberikan kesempatan kepada guru untuk meningkatkan kompetensi pedagogik, kepribadian, dan profesionalismenya.  
+
+3. Memberikan bekal kompetensi kepada peserta didik sesuai minat dan bakat agar mampu bersaing di dunia usaha, industri, maupun pendidikan yang lebih tinggi.  
+
+4. Membantu menyalurkan lulusan ke dunia usaha, industri, dan perguruan tinggi.
+    `,
     },
   ];
 

@@ -6,33 +6,29 @@ import { motion } from "framer-motion";
 const News = () => {
   const news = [
     {
-      title: "Prestasi Siswa TKJ di Kompetisi Nasional",
+      title: "Prestasi Ekstrakurikuler Paskibraka",
       excerpt:
-        "Tim siswa TKJ meraih juara 2 dalam kompetisi jaringan komputer tingkat nasional.",
-      date: "15 Desember 2024",
-      time: "2 hari yang lalu",
-      image:
-        "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "Siswa SMK Muhammadiyah Kandanghaur meraih prestasi gemilang dalam ajang lomba Paskibraka",
+      date: "06 Oktober 2025",
+      time: "07.00 WIB",
+      image: "berita/paskibra.jpg",
       category: "Prestasi",
     },
     {
-      title: "Kerjasama dengan PT Astra untuk Program Magang",
+      title: "Hari Santri Nasional 2025",
       excerpt:
-        "SMK Muhammadiyah Kandanghaur menjalin kerjasama strategis dengan PT Astra untuk program magang siswa.",
-      date: "12 Desember 2024",
-      time: "5 hari yang lalu",
-      image:
-        "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=600",
-      category: "Kerjasama",
+        "SMK Muhammadiyah Kandanghaur mengadakan peringatan Hari Santri Nasional 2025.",
+      date: "22 Oktober 2025",
+      time: "08.00 WIB",
+      image: "berita/santri.jpg",
+      category: "Peringatan",
     },
     {
-      title: "Workshop Digital Marketing untuk Siswa",
+      title: "Workshop Pengembangan TEFA 2025",
       excerpt:
-        "Pelatihan intensif digital marketing bekerjasama dengan praktisi industri untuk siswa multimedia.",
-      date: "8 Desember 2024",
-      time: "1 minggu yang lalu",
-      image:
-        "https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "Jadwal Workshop Pengembangan TEFA 2025 untuk semua program keahlian telah diumumkan.",
+      date: "22 Oktober 2025",
+      time: "12.00 WIB",
       category: "Workshop",
     },
   ];
@@ -162,16 +158,16 @@ const News = () => {
                     Pendaftaran Siswa Baru 2025/2026
                   </p>
                   <p className="text-xs text-blue-100 mt-1">
-                    Dibuka mulai Januari 2025
+                    Dibuka mulai November 2025
                   </p>
                 </motion.div>
                 <motion.div
                   className="bg-white/20 rounded-lg p-3"
                   whileHover={{ scale: 1.03 }}
                 >
-                  <p className="font-medium text-sm">Ujian Semester Ganjil</p>
+                  <p className="font-medium text-sm">Ujian TKA </p>
                   <p className="text-xs text-blue-100 mt-1">
-                    2-13 Januari 2025
+                    Dilaksanakan Pada November 2025
                   </p>
                 </motion.div>
               </div>

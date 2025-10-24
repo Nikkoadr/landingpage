@@ -108,13 +108,6 @@ const Programs = () => {
                 <p className="text-gray-600 leading-relaxed mb-4">
                   {program.description}
                 </p>
-                <motion.button
-                  className="text-blue-600 font-semibold hover:text-blue-700 transition-colors"
-                  whileHover={{ x: 5 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  Pelajari Lebih Lanjut →
-                </motion.button>
               </div>
             </motion.div>
           ))}
