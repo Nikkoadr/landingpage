@@ -33,21 +33,21 @@ const About = () => {
       icon: <Star className="h-8 w-8 text-yellow-600" />,
       title: "8 Core Value",
       description: `
-**Taqwa** — Mengutamakan nilai-nilai ketaatan kepada Allah SWT, kejujuran, persatuan, kekeluargaan, dan keterbukaan.  
+1. Taqwa — Mengutamakan nilai-nilai ketaatan kepada Allah SWT, kejujuran, persatuan, kekeluargaan, dan keterbukaan.  
 
-**Efisien** — Bekerja secara produktif dan cekatan untuk mencapai hasil yang terukur secara konsisten.  
+2. Efisien — Bekerja secara produktif dan cekatan untuk mencapai hasil yang terukur secara konsisten.  
 
-**Responsibel** — Melaksanakan tugas dan kewajiban dengan baik serta mengambil keputusan sesuai kewenangan yang diberikan.  
+3. Responsibel — Melaksanakan tugas dan kewajiban dengan baik serta mengambil keputusan sesuai kewenangan yang diberikan.  
 
-**Dedikasi** — Berpegang teguh pada nilai-nilai kemuhammadiyahan dalam pengabdian di lingkungan sekolah.  
+4. Dedikasi — Berpegang teguh pada nilai-nilai kemuhammadiyahan dalam pengabdian di lingkungan sekolah.  
 
-**Excellent** — Senantiasa mengejar dan menggapai keunggulan dalam setiap perkembangan ilmu pengetahuan dan teknologi.  
+5. Excellent — Senantiasa mengejar dan menggapai keunggulan dalam setiap perkembangan ilmu pengetahuan dan teknologi.  
 
-**Proaktif** — Menyelaraskan kurikulum dengan industri melalui pendekatan strategis untuk meningkatkan mutu pembelajaran dan lulusan.  
+6. Proaktif — Menyelaraskan kurikulum dengan industri melalui pendekatan strategis untuk meningkatkan mutu pembelajaran dan lulusan.  
 
-**Akuntabel** — Bertanggung jawab kepada seluruh pemangku kepentingan atas keputusan dan tindakan yang diambil.  
+7. Akuntabel — Bertanggung jawab kepada seluruh pemangku kepentingan atas keputusan dan tindakan yang diambil.  
 
-**Nyaman** — Mewujudkan lingkungan sekolah yang nyaman dan kondusif bagi pendidik, peserta didik, dan seluruh stakeholder.
+8. Nyaman — Mewujudkan lingkungan sekolah yang nyaman dan kondusif bagi pendidik, peserta didik, dan seluruh stakeholder.
     `,
     },
     {
