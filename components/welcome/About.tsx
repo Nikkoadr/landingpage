@@ -80,7 +80,7 @@ const About = () => {
             Tentang Sekolah
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            SMK Muhammadiyah Kandanghaur berdiri sejak 1998 sebagai lembaga
+            SMK Muhammadiyah Kandanghaur berdiri sejak 1997 sebagai lembaga
             pendidikan kejuruan yang berkomitmen menghasilkan lulusan
             berkualitas dengan landasan akhlak mulia.
           </p>
